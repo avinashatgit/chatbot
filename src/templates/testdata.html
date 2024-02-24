@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .choice{
+                border: solid 1px #ccc;
+                border-radius: 10px;
+                margin: 4px;
+                padding: 2px 6px 2px 6px;
+                display: inline-block;
+                cursor: pointer;
+                background-color: #dadada;
+        }
+    </style>
+</head>
+<body>
+    <div>Okay! I get it. You want help with test data.</div>
+    <div>Please provide the scenario id</div>
+    <div>
+        <a onclick="submitChoice(this)" data-choice="td.scenario.A01" class="choice"> A01</a>
+        <a onclick="submitChoice(this)" data-choice="td.scenario.A02" class="choice"> A02</a>
+        <a onclick="submitChoice(this)" data-choice="td.scenario.B01" class="choice"> B01</a>
+        <a onclick="submitChoice(this)" data-choice="td.scenario.B02" class="choice"> B02</a>
+    </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script>
+        function submitChoice(el){
+        var choice=el.dataset.choice;
+        console.log("from " + choice);
+        $.post("/chat",{choice: choice},function(result){
+            $(result).appendTo($("#conversation"));
+        });
+        }
+    </script>
+
+</body>
+</html>
